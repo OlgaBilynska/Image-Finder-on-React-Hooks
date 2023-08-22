@@ -1,4 +1,5 @@
 import css from './ImageErrorView.module.css';
+import PropTypes from 'prop-types';
 
 export default function ImageErrorView({ query }) {
   return (
@@ -9,3 +10,7 @@ export default function ImageErrorView({ query }) {
     </div>
   );
 }
+
+ImageErrorView.propTypes = {
+  query: PropTypes.string,
+};

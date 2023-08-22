@@ -1,5 +1,6 @@
 import css from './SearchForm.module.css';
 import { ImSearch } from 'react-icons/im';
+import PropTypes from 'prop-types';
 
 export default function SearchForm({ onChange, onFormSubmit, value }) {
   return (
@@ -21,3 +22,9 @@ export default function SearchForm({ onChange, onFormSubmit, value }) {
     </form>
   );
 }
+
+SearchForm.propTypes = {
+  onChange: PropTypes.func,
+  onFormSubmit: PropTypes.func,
+  value: PropTypes.string,
+};

@@ -1,18 +1,11 @@
 import { useEffect } from 'react';
 import css from './Modal.module.css';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 const modalRoot = document.querySelector('#modal-root');
 
 export default function Modal({ onClick, children }) {
-  // componentDidMount() {
-  //   window.addEventListener('keydown', this.handleKeyDown);
-  // }
-
-  // componentWillUnmount() {
-  //   window.removeEventListener('keydown', this.handleKeyDown);
-  // }
-
   const handleKeyDown = e => {
     if (e.code === 'Escape') {
       onClick();
@@ -40,3 +33,8 @@ export default function Modal({ onClick, children }) {
     modalRoot
   );
 }
+
+Modal.propTypes = {
+  onClick: PropTypes.func,
+  children: PropTypes.any,
+};

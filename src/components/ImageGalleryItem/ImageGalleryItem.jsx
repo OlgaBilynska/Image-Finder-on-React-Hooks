@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import css from './ImageGalleryItem.module.css';
 import Modal from 'components/Modal/Modal';
+import PropTypes from 'prop-types';
 
 export default function ImageGalleryItem({ img }) {
   const [showModal, setShowModal] = useState(false);
@@ -28,3 +29,7 @@ export default function ImageGalleryItem({ img }) {
     </li>
   );
 }
+
+ImageGalleryItem.propTypes = {
+  img: PropTypes.objectOf(PropTypes.string),
+};

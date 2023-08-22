@@ -6,20 +6,13 @@ import Button from 'components/Button/Button';
 import { toast } from 'react-toastify';
 import api from 'services/pixabay-api';
 import css from './ImageInfo.module.css';
+import PropTypes from 'prop-types';
 
 export default function ImageInfo({ query }) {
   const [images, setImages] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('idle');
   const [page, setPage] = useState(1);
-  // const [query, setQuery] = useState(query);
-
-  // state = {
-  //   images: null,
-  //   error: null,
-  //   status: 'idle',
-  //   page: 1,
-  // };
 
   useEffect(() => {
     setPage(1);
@@ -40,26 +33,6 @@ export default function ImageInfo({ query }) {
       });
   }, [query]);
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   const prevQuery = prevProps.query;
-  //   const nextQuery = this.props.query;
-
-  //   if (prevQuery !== nextQuery) {
-  //     this.setState({ page: 1 });
-  //     this.setState({ status: 'pending' });
-  //     api
-  //       .fetchFirstImages(nextQuery)
-  //       .then(({ hits }) => {
-  //         if (hits.length === 0) {
-  //           throw Error(nextQuery);
-  //         }
-  //         this.setState({ images: hits, status: 'resolved' });
-  //         return;
-  //       })
-  //       .catch(error => this.setState({ error, status: 'rejected' }));
-  //   }
-  // }
-
   const onPageChange = () => {
     setPage(prevPage => prevPage + 1);
     api
@@ -78,18 +51,15 @@ export default function ImageInfo({ query }) {
   };
 
   const statusBehaviour = status => {
-        switch (status) {
+    switch (status) {
       case 'idle':
         return <div className={css.choice}>Choose an image category here</div>;
-      // break;
 
       case 'pending':
         return <Loader />;
-      // break;
 
       case 'rejected':
         return <ImageErrorView query={query} />;
-      // break;
 
       case 'resolved':
         return (
@@ -98,7 +68,6 @@ export default function ImageInfo({ query }) {
             <Button onClick={onPageChange} />
           </div>
         );
-      // break;
 
       default:
         return null;
@@ -106,25 +75,8 @@ export default function ImageInfo({ query }) {
   };
 
   return statusBehaviour(status);
-
-  // if (status === 'idle') {
-  //   return <div className={css.choice}>Choose an image category here</div>;
-  // }
-
-  // if (status === 'pending') {
-  //   return <Loader />;
-  // }
-
-  // if (status === 'rejected') {
-  //   return <ImageErrorView query={query} />;
-  // }
-
-  // if (status === 'resolved') {
-  //   return (
-  //     <div className={css.resultMarkUp}>
-  //       <ImageGallery hits={images} />
-  //       <Button onClick={onPageChange} />
-  //     </div>
-  //   );
-  // }
 }
+
+ImageInfo.propTypes = {
+  query: PropTypes.string,
+};

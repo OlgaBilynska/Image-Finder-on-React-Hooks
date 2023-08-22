@@ -3,13 +3,10 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './Searchbar.module.css';
 import SearchForm from 'components/SearchForm/SearchForm';
+import PropTypes from 'prop-types';
 
 export default function Searchbar({ onSubmit }) {
   const [query, setQuery] = useState('');
-
-  // state = {
-  //   query: '',
-  // };
 
   const handleNameChange = event => {
     setQuery(event.currentTarget.value.toLowerCase());
@@ -35,3 +32,7 @@ export default function Searchbar({ onSubmit }) {
     </header>
   );
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func,
+};
