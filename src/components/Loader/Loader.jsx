@@ -7,7 +7,7 @@ export default function Loader() {
       <ThreeCircles
         height="300"
         width="300"
-        color="#3f51b5"
+        color="#1e8275"
         marginLeft="auto"
         wrapperStyle={{}}
         wrapperClass=""
