@@ -28,7 +28,7 @@ export default function ImageInfo({ query }) {
         return;
       })
       .catch(error => {
-        setError(error);
+        // setError(error);
         setStatus('rejected');
       });
   }, [query]);
@@ -45,7 +45,7 @@ export default function ImageInfo({ query }) {
         setStatus('resolved');
       })
       .catch(error => {
-        setError(error);
+        // setError(error);
         setStatus('rejected');
       });
   };
