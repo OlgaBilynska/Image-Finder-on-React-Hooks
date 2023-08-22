@@ -15,3 +15,7 @@
   transform: scale(1.03);
   cursor: zoom-in;
 }
+
+.imageLarge {
+  height: 90vh;
+}

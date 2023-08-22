@@ -1,25 +1,21 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Searchbar from '../Searchbar/Searchbar';
 import ImageInfo from '../ImageInfo/ImageInfo';
 import css from './App.module.css';
 
-export default class App extends Component {
-  state = {
-    query: '',
+export default function App() {
+  const [query, setQuery] = useState('');
+
+  const handleFormSubmit = query => {
+    setQuery(query);
   };
 
-  handleFormSubmit = query => {
-    this.setState({ query });
-  };
-
-  render() {
-    return (
-      <div className={css.app}>
-        <Searchbar onSubmit={this.handleFormSubmit} />
-        <ImageInfo query={this.state.query} />
-        <ToastContainer autoClose={3000} />
-      </div>
-    );
-  }
+  return (
+    <div className={css.app}>
+      <Searchbar onSubmit={handleFormSubmit} />
+      <ImageInfo query={query} />
+      <ToastContainer autoClose={3000} />
+    </div>
+  );
 }
