@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 
 export default function ImageInfo({ query }) {
   const [images, setImages] = useState(null);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(false);
   const [status, setStatus] = useState('idle');
   const [page, setPage] = useState(1);
 
